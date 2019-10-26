@@ -23,10 +23,9 @@ class MemesActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val firstMeme: MemeImage = MemeImage.loadMemeObject(applicationContext)[0]
-        meme_image_view.setImageBitmap(BitmapFactory.decodeFile(firstMeme.imagePath))
-        meme_name_text_view.text = firstMeme.name
-        meme_category_text_view.text = firstMeme.category
-
+        val memeImage = MemeImage.loadMemeObject()[0]
+        meme_image_view.setImageBitmap(BitmapFactory.decodeFile(memeImage.imagePath))
+        meme_name_text_view.text = memeImage.name
+        meme_category_text_view.text = memeImage.category
     }
 }
