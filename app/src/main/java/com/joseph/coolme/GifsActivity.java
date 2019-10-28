@@ -1,4 +1,4 @@
-package com.example.coolme;
+package com.joseph.coolme;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;

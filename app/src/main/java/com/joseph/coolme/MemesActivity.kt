@@ -1,7 +1,6 @@
-package com.example.coolme
+package com.joseph.coolme
 
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
@@ -9,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_memes_activity.*
-import java.io.ObjectInputStream
 
 class MemesActivity : AppCompatActivity() {
 
