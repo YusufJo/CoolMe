@@ -1,4 +1,4 @@
-package com.example.coolme;
+package com.joseph.coolme;
 
 import android.content.Context;
 
