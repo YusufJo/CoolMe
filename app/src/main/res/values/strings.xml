@@ -2,4 +2,12 @@
     <string name="app_name">CoolMe</string>
     <string name="gifs">GIFS</string>
     <string name="mems_text_arabic">ميمز</string>
+    <string name="dead_face">Dead face</string>
+    <string name="shit_image">Shit image</string>
+    <string name="no_internet_ar">مفيش نــت</string>
+    <string name="no_memes_ar">مفيش ميمز</string>
+    <string name="download_memes">حط طحينه</string>
+    <string name="user_shared_prefrences">kjn98hfn23infwiojfnkl23j9</string>
+    <string name="meme_images_shared_prefrences_key">"9876yGFBK4ftrt3$T$ty"</string>
+    <string name="has_previously_downloaded_images">has_previously_downloaded_images</string>
 </resources>
