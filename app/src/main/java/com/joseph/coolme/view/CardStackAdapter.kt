@@ -1,7 +1,6 @@
 package com.joseph.coolme.view
 
 import android.graphics.Bitmap
-import android.net.Uri
 import android.renderscript.Allocation
 import android.renderscript.Element
 import android.renderscript.RenderScript
