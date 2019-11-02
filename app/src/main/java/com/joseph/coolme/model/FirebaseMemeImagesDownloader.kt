@@ -5,9 +5,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
-import com.joseph.coolme.DownloadObservable
-import com.joseph.coolme.DownloadObserver
-import com.joseph.coolme.MemeImage
 import com.joseph.coolme.R
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

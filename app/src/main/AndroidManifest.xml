@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MemesDetailActivity" />
+        <activity android:name="com.joseph.coolme.controller.MemesDetailActivity" />
 
-        <activity android:name=".GifsActivity" />
-        <activity android:name=".DownloadMemesActivity" />
+        <activity android:name="com.joseph.coolme.controller.GifsActivity" />
+        <activity android:name="com.joseph.coolme.controller.DownloadMemesActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.joseph.coolme.controller.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

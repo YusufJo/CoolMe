@@ -1,4 +1,4 @@
-package com.joseph.coolme
+package com.joseph.coolme.model
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
-import com.joseph.coolme.model.ContextObservable
+import com.joseph.coolme.R
 import java.io.*
 import java.net.URI
 import java.security.SecureRandom
@@ -34,7 +34,7 @@ class MemeImage private constructor(val name: String, val category: String, val 
 
 
         override fun setContextObserver(activity: AppCompatActivity) {
-            this.activity = activity
+            Companion.activity = activity
             val memeTemplateDir = File(activity.filesDir,"Templates")
             memeTemplateDir.mkdir()
             memeTemplatesDirectory = memeTemplateDir.path
@@ -53,7 +53,7 @@ class MemeImage private constructor(val name: String, val category: String, val 
             val preferenceEditor = sharedPreferences.edit()
             val myJsonObject = Gson().toJson(memeImage)
             preferenceEditor.putString(secureRandomId, myJsonObject).apply()
-            saveMemeImageToMemeTemplatesDir(secureRandomId,memeImage.imageUri)
+            saveMemeImageToMemeTemplatesDir(secureRandomId, memeImage.imageUri)
         }
 
         private fun saveMemeImageToMemeTemplatesDir(secureRandom: String, imageUri: String){

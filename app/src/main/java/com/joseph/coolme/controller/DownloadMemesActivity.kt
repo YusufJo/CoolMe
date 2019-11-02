@@ -1,4 +1,4 @@
-package com.joseph.coolme
+package com.joseph.coolme.controller
 
 import android.content.Context
 import android.content.Intent
@@ -9,8 +9,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.joseph.coolme.R
+import com.joseph.coolme.model.DownloadObserver
 import com.joseph.coolme.model.FirebaseMemeImagesDownloader
-import kotlinx.android.synthetic.main.activity_download_memes.*
+import com.joseph.coolme.model.MemeImage
 import kotlinx.android.synthetic.main.download_meme_layout.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

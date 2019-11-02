@@ -1,4 +1,4 @@
-package com.joseph.coolme
+package com.joseph.coolme.controller
 
 
 import android.content.Context
@@ -7,7 +7,9 @@ import android.content.Intent
 import android.os.*
 import android.view.View
 import com.facebook.stetho.Stetho
+import com.joseph.coolme.R
 import com.joseph.coolme.model.FirebaseMemeImagesDownloader
+import com.joseph.coolme.model.MemeImage
 
 
 class MainActivity : AppCompatActivity() {
