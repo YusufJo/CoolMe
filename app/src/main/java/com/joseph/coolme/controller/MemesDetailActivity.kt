@@ -35,6 +35,12 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
+    }
+
     private fun initializeViews(){
         TooltipCompat.setTooltipText(backup_button,"Backup files internally")
         TooltipCompat.setTooltipText(add_button,"Add meme image")

@@ -4,12 +4,13 @@ package com.joseph.coolme.controller
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.os.*
 import android.view.View
 import com.facebook.stetho.Stetho
 import com.joseph.coolme.R
 import com.joseph.coolme.model.FirebaseMemeImagesDownloader
 import com.joseph.coolme.model.MemeImage
+import android.os.Bundle
+import androidx.core.app.ActivityOptionsCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-
+//        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         Stetho.initializeWithDefaults(this)
         layViewsUnderStatusBar()
 
@@ -43,12 +44,14 @@ class MainActivity : AppCompatActivity() {
      *  @see com.joseph.coolme.DownloadMemesActivity
      */
     fun onClickStartMemesActivity(view: View) {
+        val bundle = ActivityOptionsCompat.makeCustomAnimation(applicationContext,
+                android.R.anim.fade_in, android.R.anim.fade_out).toBundle()
         if (hasDownloadedImages) {
             val intent = Intent(this, MemesDetailActivity::class.java)
-            startActivity(intent)
+            startActivity(intent, bundle)
         } else {
             val intent = Intent(this, DownloadMemesActivity::class.java)
-            startActivity(intent)
+            startActivity(intent, bundle)
         }
 
     }
@@ -73,8 +76,8 @@ class MainActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
 
-    private val hasDownloadedImages : Boolean
-    get() = getSharedPreferences(resources.getString(R.string.user_shared_prefrences), Context.MODE_PRIVATE)
+    private val hasDownloadedImages: Boolean
+        get() = getSharedPreferences(resources.getString(R.string.user_shared_prefrences), Context.MODE_PRIVATE)
                 .getBoolean(resources.getString(R.string.has_previously_downloaded_images), false)
 
 }

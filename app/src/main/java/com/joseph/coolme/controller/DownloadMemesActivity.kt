@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Build
 import android.os.Bundle
+import android.transition.Scene
 import android.view.View
 import android.widget.Toast
 import com.joseph.coolme.R
@@ -61,6 +62,7 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
         Toast.makeText(applicationContext, "اشطا $objectsSavedCounter ميم تمب نزلوا ", Toast.LENGTH_LONG).show()
         val intent = Intent(this, MemesDetailActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun updateDownloadObserver(currentSavedObjects: Int) {

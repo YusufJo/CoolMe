@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.joseph.coolme.controller.MemesDetailActivity" />
+        <activity android:name="com.joseph.coolme.controller.MemesDetailActivity"
+            android:parentActivityName=".controller.MainActivity"/>
 
         <activity android:name="com.joseph.coolme.controller.GifsActivity" />
         <activity android:name="com.joseph.coolme.controller.DownloadMemesActivity" />
