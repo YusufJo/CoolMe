@@ -5,6 +5,7 @@ import android.renderscript.Allocation
 import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,9 +47,10 @@ class CardStackAdapter(
 
         setupBlurryImage(holder, position)
 
-        holder.itemView.setOnClickListener { v ->
-            Toast.makeText(v.context, memeImage.name, Toast.LENGTH_SHORT).show()
-        }
+//
+//        holder.itemView.setOnClickListener { v ->
+//            Toast.makeText(v.context, memeImage.name, Toast.LENGTH_SHORT).show()
+//        }
     }
 
     override fun getItemCount(): Int {

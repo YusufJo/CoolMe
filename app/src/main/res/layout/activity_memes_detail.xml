@@ -7,78 +7,113 @@
     android:layout_width="match_parent"
     android:layout_gravity="start"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     android:background="@android:color/transparent"
     tools:context=".controller.MemesDetailActivity">
 
 
-    <RelativeLayout
+    <ImageButton
+        android:id="@+id/add_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        android:src="@drawable/ic_add_24px"
+        app:layout_constraintEnd_toStartOf="@+id/delete_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backup_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        android:src="@drawable/ic_backup_24px"
+        app:layout_constraintEnd_toStartOf="@+id/add_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/delete_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        android:src="@drawable/ic_delete_24px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/card_stack_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false">
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false"
+        android:elevation="3dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/rewind_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backup_button" />
 
+    <ImageButton
+        android:id="@+id/edit_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        android:src="@drawable/ic_edit_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/rewind_button"
+        app:layout_constraintEnd_toStartOf="@+id/rewind_button"
+        app:layout_constraintTop_toTopOf="@+id/rewind_button" />
 
+    <ImageButton
+        android:id="@+id/share_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/rewind_button"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        android:src="@drawable/ic_share_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/rewind_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/rewind_button"
+        app:layout_constraintTop_toTopOf="@+id/rewind_button" />
 
+    <ImageButton
+        android:id="@+id/rewind_button"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        android:src="@drawable/rewind_blue_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-
-        <RelativeLayout
-            android:id="@+id/buttons_and_search_container"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:gravity="end"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:clipChildren="false">
-
-            <ImageButton
-                android:id="@+id/backup_button"
-                android:layout_width="48dp"
-                android:layout_toStartOf="@id/add_button"
-                android:layout_centerVertical="true"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/button_background"
-                android:elevation="2dp"
-                android:src="@drawable/ic_backup_24px" />
-
-            <ImageButton
-                android:id="@+id/delete_button"
-                android:layout_width="48dp"
-                android:layout_toEndOf="@id/add_button"
-                android:layout_centerVertical="true"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/button_background"
-                android:elevation="2dp"
-                android:src="@drawable/ic_delete_24px" />
-
-            <ImageButton
-                android:id="@+id/add_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/button_background"
-                android:elevation="2dp"
-                android:src="@drawable/ic_add_24px" />
-        </RelativeLayout>
-
-        <com.yuyakaido.android.cardstackview.CardStackView
-            android:id="@+id/card_stack_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_below="@+id/buttons_and_search_container"
-            android:layout_alignParentBottom="true"
-            android:clipToPadding="false"
-            android:padding="4dp" />
-
-
-    </RelativeLayout>
-
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:elevation="3dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

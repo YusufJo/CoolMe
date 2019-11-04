@@ -2,16 +2,15 @@ package com.joseph.coolme.model
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
-import com.joseph.coolme.R
 import java.io.*
 import java.net.URI
 import java.security.SecureRandom
 import kotlin.math.absoluteValue
-
+import android.graphics.Paint.FILTER_BITMAP_FLAG
+import com.joseph.coolme.R
 
 /** This class is responsible for creating, saving, receiving and downloading image memes from Firebase storage.
  *
@@ -21,7 +20,7 @@ import kotlin.math.absoluteValue
  *  @param imageUri                 : the uri of an image which can refer to a png saved in the memes template directory or can be a reference
  *                                      to an image received by an implicit intent from other app.
  */
-class MemeImage private constructor(val name: String, val category: String, val imageUri: String){
+class MemeImage private constructor(val name: String, val category: String, val imageUri: String) {
 //    var imageBitmapByteArray: ByteArray = byteArrayOf()
 
     /** Static core of MemeImage::class
@@ -35,15 +34,15 @@ class MemeImage private constructor(val name: String, val category: String, val 
 
         override fun setContextObserver(activity: AppCompatActivity) {
             Companion.activity = activity
-            val memeTemplateDir = File(activity.filesDir,"Templates")
+            val memeTemplateDir = File(activity.filesDir, "Templates")
             memeTemplateDir.mkdir()
             memeTemplatesDirectory = memeTemplateDir.path
         }
 
-        private fun getMemesSharedPreferences(): SharedPreferences{
+        private fun getMemesSharedPreferences(): SharedPreferences {
             val context = activity.applicationContext
             val key = context.resources.getString(R.string.meme_images_shared_prefrences_key)
-            return context.getSharedPreferences(key,Context.MODE_PRIVATE)
+            return context.getSharedPreferences(key, Context.MODE_PRIVATE)
         }
 
 
@@ -56,9 +55,9 @@ class MemeImage private constructor(val name: String, val category: String, val 
             saveMemeImageToMemeTemplatesDir(secureRandomId, memeImage.imageUri)
         }
 
-        private fun saveMemeImageToMemeTemplatesDir(secureRandom: String, imageUri: String){
-            val imageFile = File(memeTemplatesDirectory,"$secureRandom.PNG")
-            File(URI(imageUri)).copyTo(imageFile,true)
+        private fun saveMemeImageToMemeTemplatesDir(secureRandom: String, imageUri: String) {
+            val imageFile = File(memeTemplatesDirectory, "$secureRandom.PNG")
+            File(URI(imageUri)).copyTo(imageFile, true)
         }
 
 
@@ -75,11 +74,17 @@ class MemeImage private constructor(val name: String, val category: String, val 
             return memeImage
         }
 
-        fun deleteMemeImage(memeImage: MemeImage){
+        fun deleteMemeImage(memeImage: MemeImage) {
             File(memeImage.imageUri).delete()
-            val memeImageId = memeImage.imageUri.replace("$memeTemplatesDirectory/","")
+            val memeImageId = memeImage.imageUri.replace("$memeTemplatesDirectory/", "")
             getMemesSharedPreferences().edit().remove(memeImageId).apply()
         }
+
+        fun deleteMemeImage(position: Int) {
+            val memeImageToDelete = loadSavedMemeImages().get(position)
+            deleteMemeImage(memeImageToDelete)
+        }
+
 
     }
 

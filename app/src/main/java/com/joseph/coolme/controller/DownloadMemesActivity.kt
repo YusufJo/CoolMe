@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.transition.Scene
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
 import com.joseph.coolme.R
 import com.joseph.coolme.model.DownloadObserver
 import com.joseph.coolme.model.FirebaseMemeImagesDownloader
@@ -57,11 +58,19 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
+    }
+
 
     private var downloadCompleted: Boolean by Delegates.observable(false) { _, _, _ ->
+        val bundle = ActivityOptionsCompat.makeCustomAnimation(applicationContext,
+                android.R.anim.fade_in, android.R.anim.fade_out).toBundle()
         Toast.makeText(applicationContext, "اشطا $objectsSavedCounter ميم تمب نزلوا ", Toast.LENGTH_LONG).show()
         val intent = Intent(this, MemesDetailActivity::class.java)
-        startActivity(intent)
+        startActivity(intent,bundle)
         finish()
     }
 

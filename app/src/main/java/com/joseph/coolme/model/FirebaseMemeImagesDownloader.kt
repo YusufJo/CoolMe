@@ -122,7 +122,7 @@ class FirebaseMemeImagesDownloader {
                     listOf(
                             MemeImage.createMemeImage("Woman yelling at a cat", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/3118701756182461752.PNG", true),
                             MemeImage.createMemeImage("x x everywhere", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/2789549287549790465.PNG", true),
-                            MemeImage.createMemeImage("Young Cardi-B", "احمد عبدالعزيز", "${MemeImage.memeTemplatesDirectory}/4051905074816386882.PNG", true),
+                            MemeImage.createMemeImage("Young Cardi-B", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/4051905074816386882.PNG", true),
                             MemeImage.createMemeImage("حمدي الوزير", "قبضه الهلالي", "${MemeImage.memeTemplatesDirectory}/7479651419850771894.PNG", true)
                     ).saveMultipleMemeObjectsToSharedPrefernces()
                 }
