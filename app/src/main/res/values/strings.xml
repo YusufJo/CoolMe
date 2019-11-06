@@ -10,4 +10,5 @@
     <string name="user_shared_prefrences">kjn98hfn23infwiojfnkl23j9</string>
     <string name="meme_images_shared_prefrences_key">"9876yGFBK4ftrt3$T$ty"</string>
     <string name="has_previously_downloaded_images">has_previously_downloaded_images</string>
+    <string name="has_previously_signed_in">has_previously_signed_in</string>
 </resources>

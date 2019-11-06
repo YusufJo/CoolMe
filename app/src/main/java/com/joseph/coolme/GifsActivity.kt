@@ -1,4 +1,4 @@
-package com.joseph.coolme.controller
+package com.joseph.coolme
 
 
 import androidx.appcompat.app.AppCompatActivity

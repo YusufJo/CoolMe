@@ -1,4 +1,4 @@
-package com.joseph.coolme.controller
+package com.joseph.coolme
 
 import android.content.Context
 import android.content.Intent
@@ -7,11 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Build
 import android.os.Bundle
-import android.transition.Scene
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
-import com.joseph.coolme.R
 import com.joseph.coolme.model.DownloadObserver
 import com.joseph.coolme.model.FirebaseMemeImagesDownloader
 import com.joseph.coolme.model.MemeImage

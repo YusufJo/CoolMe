@@ -14,7 +14,7 @@ import java.io.File
 class FirebaseMemeImagesDownloader {
 
     companion object : ContextObservable, DownloadObservable {
-        val firebaseMemesDir = FirebaseStorage.getInstance().getReferenceFromUrl("gs://coolme-yaqout.appspot.com/memes/meme_templates/")
+        val firebaseMemesDir = FirebaseStorage.getInstance().getReferenceFromUrl("gs://coolme2.appspot.com/memes/")
         private lateinit var activity: AppCompatActivity
         private lateinit var downloadObserver: DownloadObserver
         var filesFromFirebaseCount: Int = 0

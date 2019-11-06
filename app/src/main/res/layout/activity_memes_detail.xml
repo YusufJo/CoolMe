@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:background="@android:color/transparent"
-    tools:context=".controller.MemesDetailActivity">
+    tools:context=".MemesDetailActivity">
 
 
     <ImageButton

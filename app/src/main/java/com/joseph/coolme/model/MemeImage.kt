@@ -9,7 +9,6 @@ import java.io.*
 import java.net.URI
 import java.security.SecureRandom
 import kotlin.math.absoluteValue
-import android.graphics.Paint.FILTER_BITMAP_FLAG
 import com.joseph.coolme.R
 
 /** This class is responsible for creating, saving, receiving and downloading image memes from Firebase storage.

@@ -26,13 +26,13 @@
         </provider>
 
         <activity
-            android:name=".controller.MemesDetailActivity"
-            android:parentActivityName=".controller.MainActivity" />
-        <activity android:name=".controller.GifsActivity" />
-        <activity android:name=".controller.DownloadMemesActivity" />
+            android:name=".MemesDetailActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".GifsActivity" />
+        <activity android:name=".DownloadMemesActivity" />
 
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

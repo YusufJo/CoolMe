@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "946527174940",
-    "firebase_url": "https://coolme-yaqout.firebaseio.com",
-    "project_id": "coolme-yaqout",
-    "storage_bucket": "coolme-yaqout.appspot.com"
+    "project_number": "553409933475",
+    "firebase_url": "https://coolme2.firebaseio.com",
+    "project_id": "coolme2",
+    "storage_bucket": "coolme2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:946527174940:android:eb614e5203ca48d0283ad9",
+        "mobilesdk_app_id": "1:553409933475:android:ae434eb5ae275b76dc8f16",
         "android_client_info": {
           "package_name": "com.joseph.coolme"
         }
       },
       "oauth_client": [
         {
-          "client_id": "946527174940-5ufd2o277ovgok1kpsrh5u327qsfpe39.apps.googleusercontent.com",
+          "client_id": "553409933475-tvkelm97binft9gt981uf69legpibsgi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.joseph.coolme",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "946527174940-9dlcvsr34mevqhmu13gvd8pu9hpbapm5.apps.googleusercontent.com",
+          "client_id": "553409933475-ii1tvkfdh1a6vm5aj2f067u7i7d1ut6f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyATB8PtarVw-HAJXcWul2QsjC_civP_gfg"
+          "current_key": "AIzaSyBX7NuNWN_aclxF3uAXhkb00wY3Hz4t9KE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "946527174940-9dlcvsr34mevqhmu13gvd8pu9hpbapm5.apps.googleusercontent.com",
+              "client_id": "553409933475-ii1tvkfdh1a6vm5aj2f067u7i7d1ut6f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

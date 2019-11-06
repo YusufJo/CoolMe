@@ -1,4 +1,4 @@
-package com.joseph.coolme.controller
+package com.joseph.coolme
 
 import android.annotation.TargetApi
 import android.content.Intent
@@ -15,8 +15,6 @@ import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
-import com.joseph.coolme.BuildConfig
-import com.joseph.coolme.R
 import com.joseph.coolme.model.MemeImage
 import com.joseph.coolme.view.CardStackAdapter
 import com.joseph.coolme.view.MemeImageDiffCallback
