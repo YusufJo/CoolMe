@@ -156,20 +156,11 @@ class FirebaseMemeImagesDownloader {
             return context.getSharedPreferences(key, Context.MODE_PRIVATE)
         }
 
-        /** Initializes downloadObserver and assign it to DownloadMemesActivity for observing of download completion
-         * @param obj : observer in this case DownloadMemesActivity
-         * @see com.joseph.coolme.DownloadMemesActivity
-         */
+
         override fun setDownloadObserver(obj: Any) {
             downloadObserver = obj as DownloadObserver
         }
 
-        /** Notifies the observer of this class  which is DownloadMemesActivity that downloading from firebase has been completed
-         *  by sending the number of memes downaded and successfully saved as serialized objects.
-         * @see com.joseph.coolme.DownloadMemesActivity
-         * @see currentSavedImages
-         * @see com.joseph.coolme.DownloadMemesActivity.objectsSavedCounter
-         */
         override fun notifyDownloadObserver() {
             downloadObserver.updateDownloadObserver(currentSavedImages)
         }

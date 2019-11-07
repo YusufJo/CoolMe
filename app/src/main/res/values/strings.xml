@@ -11,4 +11,7 @@
     <string name="meme_images_shared_prefrences_key">"9876yGFBK4ftrt3$T$ty"</string>
     <string name="has_previously_downloaded_images">has_previously_downloaded_images</string>
     <string name="has_previously_signed_in">has_previously_signed_in</string>
+    <string name="backup_button_Text">شوف Backup</string>
+    <string name="download_button_text">جيب شويه</string>
+    <string name="has_restored_backup_files">has_restored_backup_files</string>
 </resources>

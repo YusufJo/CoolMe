@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/purple_radial">
@@ -10,6 +11,7 @@
         android:id="@+id/downlading_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:visibility="gone"
         app:SpinKit_Color="@color/shadowColor"
         app:SpinKit_Style="FoldingCube"
@@ -73,17 +75,35 @@
             android:id="@+id/download_button"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/download_button_active"
             android:fontFamily="@font/cairo_light"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:text="@string/download_memes"
+            android:text="@string/download_button_text"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/restore_backup_button"
             app:layout_constraintEnd_toEndOf="@+id/no_internet_text_view"
             app:layout_constraintStart_toStartOf="@+id/no_internet_text_view"
             app:layout_constraintTop_toBottomOf="@+id/no_internet_text_view" />
+
+        <Button
+
+            android:id="@+id/restore_backup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/backup_button_active"
+            android:fontFamily="@font/cairo_light"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/backup_button_Text"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/download_button"
+            app:layout_constraintStart_toStartOf="@+id/download_button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
