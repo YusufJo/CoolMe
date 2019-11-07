@@ -50,12 +50,13 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
     private fun setUpRestoreBackupButton() {
         restore_backup_button.setOnClickListener {
             runOnUiThread {
+                download_button.isEnabled = false
                 restore_backup_button.isEnabled = false
                 downlading_spinner.visibility = View.VISIBLE
                 restore_backup_button.setTextColor(Color.BLACK)
                 restore_backup_button.setBackgroundResource(R.drawable.button_deactivated)
             }
-                checkReadExternalStoragePermission()
+            checkReadExternalStoragePermission()
         }
     }
 
@@ -111,7 +112,6 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
                 checkBackUpFiles()
             } else {
                 Toast.makeText(applicationContext, "Permission Denied", Toast.LENGTH_SHORT).show()
-                checkBackUpFiles()
                 restore_backup_button.isEnabled = true
                 restore_backup_button.setTextColor(Color.WHITE)
                 downlading_spinner.visibility = View.GONE
@@ -123,24 +123,39 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
     private fun checkBackUpFiles() {
         val backupDir = File("/storage/emulated/0/.CoolMeBackup")
         val backupDirExists = backupDir.exists()
-
+//        val hasValidSharedPrefFile = backupDir.walk().map { it.name }.contains(resources.getString(R.string.meme_images_shared_prefrences_key).plus(".xml"))
         if (backupDirExists) {
-            kotlin.runCatching {
-                backupDir.listFiles()?.forEach { it.copyTo(filesDir, true) }
-            }.onSuccess {
-                Toast.makeText(applicationContext, "Backup restored successfully", Toast.LENGTH_SHORT).show()
-                updateRestoredBackupStateInSharedPref()
-                val bundle = ActivityOptionsCompat.makeCustomAnimation(applicationContext,
-                        android.R.anim.fade_in, android.R.anim.fade_out).toBundle()
-                val intent = Intent(this, MemesDetailActivity::class.java)
-                startActivity(intent, bundle)
-            }
+            restoreBackupFiles()
         } else {
             Toast.makeText(applicationContext, "No backup files found", Toast.LENGTH_SHORT).show()
+            download_button.isEnabled = true
             restore_backup_button.isEnabled = true
             restore_backup_button.setTextColor(Color.WHITE)
             downlading_spinner.visibility = View.GONE
             restore_backup_button.setBackgroundResource(R.drawable.backup_button_active)
+        }
+    }
+
+    private fun restoreBackupFiles() {
+        val backupFiles = File("/storage/emulated/0/.CoolMeBackup/files")
+        val internalFilesDir = File(filesDir.path)
+        val backupSharedPrefFile = File("/storage/emulated/0/.CoolMeBackup/shared_prefs/".plus(resources.getString(R.string.meme_images_shared_prefrences_key)).plus(".xml"))
+        val sharedPrefsDir = File("${filesDir.parentFile?.path}/shared_prefs/".plus(resources.getString(R.string.meme_images_shared_prefrences_key)).plus(".xml"))
+        kotlin.runCatching {
+            backupSharedPrefFile.copyTo(sharedPrefsDir, true)
+            backupFiles.listFiles()?.forEach { it.copyRecursively(File(internalFilesDir.absolutePath.plus("/${it.name}")), true) }
+        }.onSuccess {
+            updateRestoredBackupStateInSharedPref()
+            Toast.makeText(applicationContext, "Backup restored successfully", Toast.LENGTH_SHORT).show()
+            val bundle = ActivityOptionsCompat.makeCustomAnimation(applicationContext,
+                    android.R.anim.fade_in, android.R.anim.fade_out).toBundle()
+            val intent = Intent(this, MemesDetailActivity::class.java)
+            startActivity(intent, bundle)
+        }.onFailure { exception ->
+            println("EXXPP: ${exception.message}")
+            Toast.makeText(applicationContext, "Couldn't restore backup files", Toast.LENGTH_SHORT).show()
+            download_button.isEnabled = true
+
         }
     }
 
@@ -151,18 +166,20 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
                 download_button.isEnabled = false
                 downlading_spinner.visibility = View.VISIBLE
                 download_button.setBackgroundResource(R.drawable.button_deactivated)
+                restore_backup_button.isEnabled = false
+            }
 
-                runBlocking {
-                    launch {
-                        File(MemeImage.memeTemplatesDirectory).listFiles()?.forEach { it.delete() }
-                        getSharedPreferences(resources.getString(R.string.meme_images_shared_prefrences_key), Context.MODE_PRIVATE).edit().clear().apply()
-                    }
-                }.invokeOnCompletion {
-                    FirebaseMemeImagesDownloader.firebaseMemesDir.child("7920923873988338478.PNG").downloadUrl.addOnSuccessListener {
-                        FirebaseMemeImagesDownloader.downloadDefaultMemesFromFirebase()
-                    }
+            runBlocking {
+                launch {
+                    File(MemeImage.memeTemplatesDirectory).listFiles()?.forEach { it.delete() }
+                    getSharedPreferences(resources.getString(R.string.meme_images_shared_prefrences_key), Context.MODE_PRIVATE).edit().clear().apply()
+                }
+            }.invokeOnCompletion {
+                FirebaseMemeImagesDownloader.firebaseMemesDir.child("7920923873988338478.PNG").downloadUrl.addOnSuccessListener {
+                    FirebaseMemeImagesDownloader.downloadDefaultMemesFromFirebase()
                 }
             }
+
         }
     }
 
@@ -182,7 +199,7 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
         finish()
     }
 
-    private fun updateRestoredBackupStateInSharedPref(){
+    private fun updateRestoredBackupStateInSharedPref() {
         val sharedPreferences = getSharedPreferences(resources.getString(R.string.user_shared_prefrences), Context.MODE_PRIVATE)
         val sharedPrefrencesEditor = sharedPreferences.edit()
         val key = resources.getString(R.string.has_restored_backup_files)

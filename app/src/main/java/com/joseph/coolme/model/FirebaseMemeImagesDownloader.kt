@@ -135,9 +135,7 @@ class FirebaseMemeImagesDownloader {
 
         override fun setContextObserver(activity: AppCompatActivity) {
             this.activity = activity
-//        val memeTemplateDir = File(activity.filesDir, "Templates")
-//        memeTemplateDir.mkdir()
-//        MemeImage.memeTemplatesDirectory = memeTemplateDir.path
+
         }
 
         private fun List<MemeImage>.saveMultipleMemeObjectsToSharedPrefernces() {
