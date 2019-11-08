@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_layout"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_gravity="start"
     android:layout_height="match_parent"
-    android:clipChildren="false"
+    android:layout_gravity="start"
     android:background="@android:color/transparent"
+    android:clipChildren="false"
+    android:fitsSystemWindows="true"
     tools:context=".MemesDetailActivity">
 
 
@@ -16,37 +16,37 @@
         android:id="@+id/add_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_background"
         android:elevation="2dp"
         android:src="@drawable/ic_add_24px"
         app:layout_constraintEnd_toStartOf="@+id/delete_button"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_frame" />
 
     <ImageButton
         android:id="@+id/backup_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_background"
         android:elevation="2dp"
         android:src="@drawable/ic_backup_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/add_button"
         app:layout_constraintEnd_toStartOf="@+id/add_button"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/add_button" />
 
     <ImageButton
         android:id="@+id/delete_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_background"
         android:elevation="2dp"
         android:src="@drawable/ic_delete_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/add_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/add_button" />
 
     <com.yuyakaido.android.cardstackview.CardStackView
         android:id="@+id/card_stack_view"
@@ -97,23 +97,40 @@
         android:layout_height="38dp"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button_background"
         android:elevation="2dp"
         android:src="@drawable/rewind_blue_24dp"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:elevation="3dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/search_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_view_background"
+            android:elevation="2dp"
+            app:iconifiedByDefault="false"
+            app:searchIcon="@drawable/ic_search_blue_24dp"
+            app:closeIcon="@drawable/ic_close_dark_red_24dp"
+            android:clickable="true"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="بتدور علي حاجه ؟"
+            android:focusable="true" />
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

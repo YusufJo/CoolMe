@@ -47,10 +47,6 @@ class CardStackAdapter(
 
         setupBlurryImage(holder, position)
 
-//
-//        holder.itemView.setOnClickListener { v ->
-//            Toast.makeText(v.context, memeImage.name, Toast.LENGTH_SHORT).show()
-//        }
     }
 
     override fun getItemCount(): Int {
@@ -63,6 +59,10 @@ class CardStackAdapter(
 
     fun getMemeImages(): List<MemeImage> {
         return memeImages
+    }
+
+    fun clearMemeImages(){
+        memeImages = listOf()
     }
 
     private fun setupBlurryImage(holder: ViewHolder, position: Int){

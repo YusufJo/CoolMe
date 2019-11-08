@@ -85,6 +85,8 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
                                 restore_backup_button.isEnabled = true
                                 restore_backup_button.setTextColor(Color.WHITE)
                                 downlading_spinner.visibility = View.GONE
+
+                                download_button.isEnabled = true
                                 restore_backup_button.setBackgroundResource(R.drawable.backup_button_active)
                             })
                         }
@@ -115,6 +117,8 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
                 restore_backup_button.isEnabled = true
                 restore_backup_button.setTextColor(Color.WHITE)
                 downlading_spinner.visibility = View.GONE
+
+                download_button.isEnabled = true
                 restore_backup_button.setBackgroundResource(R.drawable.backup_button_active)
             }
         }

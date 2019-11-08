@@ -4,16 +4,15 @@ import android.annotation.TargetApi
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.app.ActivityCompat
@@ -26,10 +25,12 @@ import com.joseph.coolme.view.CardStackAdapter
 import com.joseph.coolme.view.MemeImageDiffCallback
 import com.yuyakaido.android.cardstackview.*
 import kotlinx.android.synthetic.main.activity_memes_detail.*
-import kotlinx.android.synthetic.main.download_meme_layout.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 import java.io.File
-import java.nio.file.Files
-import java.nio.file.Path
+import java.util.*
 
 class MemesDetailActivity : AppCompatActivity(), CardStackListener {
     private val cardStackView by lazy { card_stack_view as CardStackView }
@@ -44,6 +45,79 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
         initializeViews()
         setupCardStackView()
         setupButtons()
+        setSearchBar()
+        softKeyboardListener()
+
+    }
+
+    private fun softKeyboardListener() {
+        KeyboardVisibilityEvent.setEventListener(this, KeyboardVisibilityEventListener {
+            adapter.notifyDataSetChanged()
+            if (!it) {
+//                search_bar.isFocusable = false
+                search_bar.clearFocus()
+                search_bar.setQuery("",false)
+            }
+        })
+    }
+
+
+    private fun setSearchBar() {
+        search_bar.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (!newText.isNullOrBlank() && refineWord(newText).length > 1) {
+                    adapter.setMemeImages(performSearchOn(newText))
+                    adapter.notifyDataSetChanged()
+                } else {
+                    reload()
+                    adapter.notifyDataSetChanged()
+                }
+                return true
+            }
+        })
+        search_bar.setOnQueryTextFocusChangeListener { v, hasFocus -> if (!hasFocus) reload() }
+
+    }
+
+
+    private fun performSearchOn(key: String): List<MemeImage> {
+        val result = mutableListOf<MemeImage>()
+        runBlocking {
+            launch {
+                result.addAll(MemeImage.loadSavedMemeImages().filter { matchWords(key, it.name) || matchWords(key, it.category) })
+            }
+        }
+        return result
+    }
+
+    private fun matchWords(searchedWord: String, originalWord: String): Boolean {
+        val first = refineWord(searchedWord)
+        val second = refineWord(originalWord)
+        return second.contains(first, true)
+
+    }
+
+    private fun refineWord(word: String): String {
+        return word.trim()
+                .replace("أ", "ا")
+                .replace("إ", "ا")
+                .replace("آ", "ا")
+                .replace("ة", "ه")
+                .replace("َ", "")
+                .replace("ً", "")
+                .replace("ِ", "")
+                .replace("ٍ", "")
+                .replace("ُ", "")
+                .replace("ٌ", "")
+                .replace("ْ", "")
+                .replace("ّ", "")
+                .replace("ئ", "ء")
+                .replace("", "")
+
 
     }
 
@@ -96,6 +170,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
         }
     }
 
+
     private fun createBackUpFiles() {
         val backupSharedPrefsDir = File("/storage/emulated/0/.CoolMeBackup/shared_prefs")
         val sharedPrefs = File("${filesDir.parentFile?.path}/shared_prefs/${resources.getString(R.string.meme_images_shared_prefrences_key)}.xml")
@@ -109,7 +184,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
 
         kotlin.runCatching {
             sharedPrefs.copyTo(backupSharedPrefsFile, true)
-            internalFiles.listFiles()?.forEach { it.copyRecursively(File(backupFilesDir.absolutePath.plus("/${it.name}")),true) }
+            internalFiles.listFiles()?.forEach { it.copyRecursively(File(backupFilesDir.absolutePath.plus("/${it.name}")), true) }
         }.onSuccess { Toast.makeText(applicationContext, "Backup created successfully", Toast.LENGTH_SHORT).show() }
                 .onFailure { exception ->
                     println("EEXXEEPP: ${exception.message}")
@@ -124,6 +199,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        adapter.notifyDataSetChanged()
 
     }
 
@@ -228,7 +304,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
 
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
-        if (manager.topPosition == adapter.itemCount - 5) {
+        if (manager.topPosition == adapter.itemCount) {
             paginate()
         }
 //        currentMemeImage = MemeImage.loadSavedMemeImages()[manager.topPosition]

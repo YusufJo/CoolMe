@@ -32,7 +32,6 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".GifsActivity" />
         <activity android:name=".DownloadMemesActivity" />
-
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
