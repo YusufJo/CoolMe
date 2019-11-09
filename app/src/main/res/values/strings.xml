@@ -14,4 +14,7 @@
     <string name="backup_button_Text">شوف Backup</string>
     <string name="download_button_text">جيب شويه</string>
     <string name="has_restored_backup_files">has_restored_backup_files</string>
+    <string name="save_button_text">Save</string>
+    <string name="add_meme_name_text_edit_hint">Name</string>
+    <string name="add_meme_category_text_edit_hint">Category</string>
 </resources>

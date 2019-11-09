@@ -63,6 +63,10 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0-rc01"
 
+    // idk
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.github.dhaval2404:imagepicker:1.5'
+
 
 }
 repositories {

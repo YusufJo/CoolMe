@@ -36,12 +36,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:alpha="0.6"
-            android:background="@android:color/white"
-            android:fontFamily="@font/cairo_light"
+            android:backgroundTint="@android:color/transparent"
             android:onClick="onClickStartGifsActivity"
-            android:text="@string/gifs"
-            android:textColor="@android:color/black"
-            android:textSize="76sp"
             app:layout_constraintBottom_toBottomOf="@+id/welcome_gif_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,21 +55,68 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/welcome_memes_grid" />
 
+
         <Button
             android:id="@+id/memes_section_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:alpha="0.6"
-            android:background="@android:color/black"
-            android:fontFamily="@font/cairo_light"
+            android:backgroundTint="@android:color/transparent"
             android:onClick="onClickStartMemesActivity"
-            android:text="@string/mems_text_arabic"
-            android:textColor="@android:color/white"
-            android:textSize="76sp"
             app:layout_constraintBottom_toTopOf="@+id/welcome_gif_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/welcome_gif_view"
+            android:alpha="0.6"
+            android:background="@android:color/white"
+            android:layout_height="0dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_gif_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:alpha="0.4"
+            android:background="@android:color/background_dark">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mems_text_arabic"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_gif_view"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:textColor="@android:color/white"
+            android:foregroundTint="@android:color/white"
+            android:foregroundTintMode="add"
+            android:textSize="76sp"
+            android:fontFamily="@font/cairo_light"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_light"
+            android:text="@string/gifs"
+            android:textColor="@android:color/black"
+            android:textSize="76sp"
+            app:layout_constraintBottom_toBottomOf="@+id/welcome_gif_view"
+            app:layout_constraintEnd_toEndOf="@+id/welcome_gif_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/welcome_gif_view" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

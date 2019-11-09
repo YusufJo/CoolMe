@@ -32,7 +32,12 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventList
 import java.io.File
 import java.util.*
 
-class MemesDetailActivity : AppCompatActivity(), CardStackListener {
+class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetObserver {
+
+    override fun updateFromBottomSheet() {
+        reload()
+    }
+
     private val cardStackView by lazy { card_stack_view as CardStackView }
     private val manager by lazy { CardStackLayoutManager(this, this) }
     private val adapter by lazy { CardStackAdapter(MemeImage.loadSavedMemeImages()) }
@@ -245,7 +250,8 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener {
 
     fun onClickAddImageMemes() {
         add_button.setOnClickListener {
-            Toast.makeText(applicationContext, "Meme Was added", Toast.LENGTH_SHORT).show()
+            val bottomSheet = AddMemeBottomSheet(this)
+            bottomSheet.show(supportFragmentManager, "Show bottom sheet")
         }
     }
 

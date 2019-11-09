@@ -155,6 +155,7 @@ class DownloadMemesActivity : AppCompatActivity(), DownloadObserver {
                     android.R.anim.fade_in, android.R.anim.fade_out).toBundle()
             val intent = Intent(this, MemesDetailActivity::class.java)
             startActivity(intent, bundle)
+            finish()
         }.onFailure { exception ->
             println("EXXPP: ${exception.message}")
             Toast.makeText(applicationContext, "Couldn't restore backup files", Toast.LENGTH_SHORT).show()

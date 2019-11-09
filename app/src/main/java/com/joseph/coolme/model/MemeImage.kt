@@ -6,7 +6,6 @@ import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import java.io.*
-import java.net.URI
 import java.security.SecureRandom
 import kotlin.math.absoluteValue
 import com.joseph.coolme.R
@@ -19,7 +18,7 @@ import com.joseph.coolme.R
  *  @param imageUri                 : the uri of an image which can refer to a png saved in the memes template directory or can be a reference
  *                                      to an image received by an implicit intent from other app.
  */
-class MemeImage private constructor(val name: String, val category: String, val imageUri: String) {
+class MemeImage private constructor(val name: String, val category: String, var imageUri: String) {
 //    var imageBitmapByteArray: ByteArray = byteArrayOf()
 
     /** Static core of MemeImage::class
@@ -49,14 +48,16 @@ class MemeImage private constructor(val name: String, val category: String, val 
             val secureRandomId = SecureRandom().nextLong().absoluteValue.toString()
             val sharedPreferences = getMemesSharedPreferences()
             val preferenceEditor = sharedPreferences.edit()
+            val fileUri = File(memeImage.imageUri)
+            memeImage.imageUri = "$memeTemplatesDirectory/$secureRandomId.PNG"
             val myJsonObject = Gson().toJson(memeImage)
-            preferenceEditor.putString(secureRandomId, myJsonObject).apply()
-            saveMemeImageToMemeTemplatesDir(secureRandomId, memeImage.imageUri)
+            preferenceEditor.putString(secureRandomId.plus(".PNG"), myJsonObject).apply()
+            saveMemeImageToMemeTemplatesDir(secureRandomId, fileUri)
         }
 
-        private fun saveMemeImageToMemeTemplatesDir(secureRandom: String, imageUri: String) {
-            val imageFile = File(memeTemplatesDirectory, "$secureRandom.PNG")
-            File(URI(imageUri)).copyTo(imageFile, true)
+        private fun saveMemeImageToMemeTemplatesDir(secureRandom: String, imageFile: File) {
+            val localImageFile = File(memeTemplatesDirectory, "$secureRandom.PNG")
+            File(imageFile.path).copyTo(localImageFile, true)
         }
 
 

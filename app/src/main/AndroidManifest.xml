@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -21,17 +20,25 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_provider" />
+                android:resource="@xml/file_provider"
+                tools:replace="android:resource"/>
         </provider>
 
         <activity
             android:name=".MemesDetailActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".GifsActivity" />
-        <activity android:name=".DownloadMemesActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".GifsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DownloadMemesActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
