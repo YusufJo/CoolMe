@@ -17,20 +17,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:textColor="@android:color/white"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        app:cornerRadius="10dp"
+        android:paddingStart="20dp"
+        app:backgroundTint="@color/mtrl_btn_bg_color_selector"
         android:enabled="false"
+        android:paddingEnd="20dp"
+        android:fontFamily="@font/cairo_light"
+        android:textSize="18sp"
         android:text="@string/save_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="PrivateResource" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -40,7 +54,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:hint="Name"
+        android:hint="@string/add_meme_name_textview"
         app:boxStrokeColor="@color/addMemesButton"
         app:boxStrokeErrorColor="@color/delete_button"
         app:errorEnabled="true"
@@ -67,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Category"
+        android:hint="@string/add_meme_category_textview"
         app:boxStrokeColor="@color/addMemesButton"
         app:boxStrokeErrorColor="@color/delete_button"
         app:errorEnabled="true"

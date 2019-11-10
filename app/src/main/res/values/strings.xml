@@ -17,4 +17,6 @@
     <string name="save_button_text">Save</string>
     <string name="add_meme_name_text_edit_hint">Name</string>
     <string name="add_meme_category_text_edit_hint">Category</string>
+    <string name="add_meme_category_textview">Category</string>
+    <string name="add_meme_name_textview">Name</string>
 </resources>

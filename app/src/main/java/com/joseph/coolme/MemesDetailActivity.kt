@@ -24,6 +24,7 @@ import com.joseph.coolme.model.MemeImage
 import com.joseph.coolme.view.CardStackAdapter
 import com.joseph.coolme.view.MemeImageDiffCallback
 import com.yuyakaido.android.cardstackview.*
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_memes_detail.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -53,6 +54,13 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
         setSearchBar()
         softKeyboardListener()
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        cacheDir.listFiles()?.forEach { it.deleteRecursively() }
+        codeCacheDir.listFiles()?.forEach { it.deleteRecursively() }
+        clearFindViewByIdCache()
     }
 
     private fun softKeyboardListener() {
