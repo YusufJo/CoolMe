@@ -88,6 +88,6 @@ class MemeImage private constructor(val name: String, val category: String, var 
 
     }
 
-    val getBitmapImage: Bitmap get() = BitmapFactory.decodeFile(this.imageUri)
+    val getBitmapImage: Bitmap? get() = BitmapFactory.decodeFile(this.imageUri)
 
 }

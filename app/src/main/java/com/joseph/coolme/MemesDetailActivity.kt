@@ -61,7 +61,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
             if (!it) {
 //                search_bar.isFocusable = false
                 search_bar.clearFocus()
-                search_bar.setQuery("",false)
+                search_bar.setQuery("", false)
             }
         })
     }
@@ -313,8 +313,6 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
         if (manager.topPosition == adapter.itemCount) {
             paginate()
         }
-//        currentMemeImage = MemeImage.loadSavedMemeImages()[manager.topPosition]
-
     }
 
     override fun onCardRewound() {
@@ -330,9 +328,9 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
         val textView = view.findViewById<TextView>(R.id.item_name)
         Log.d("CardStackViewDD", "onCardAppeared: ($position) ${textView.text}")
         Log.d("CardStackViewDD", "DCurrent swipe count = ${manager.topPosition}")
-        currentMemeImage = MemeImage.loadSavedMemeImages().find { it.name == textView.text }!!
-        Log.d("CardStackViewDD", "DCurrent MemeName = ${currentMemeImage.name}")
-
+        Thread(Runnable {
+            currentMemeImage = MemeImage.loadSavedMemeImages().find { it.name == textView.text }!!
+        }).start()
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
@@ -389,6 +387,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
 
             }
             MemeImage.deleteMemeImage(currentMemeImage)
+
         }
 
         val callback = MemeImageDiffCallback(old, new)
