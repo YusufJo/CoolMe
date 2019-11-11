@@ -21,6 +21,7 @@ import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.joseph.coolme.model.MemeImage
+import com.joseph.coolme.photoEditor.EditAndShareMeme
 import com.joseph.coolme.view.CardStackAdapter
 import com.joseph.coolme.view.MemeImageDiffCallback
 import com.yuyakaido.android.cardstackview.*
@@ -31,7 +32,6 @@ import kotlinx.coroutines.runBlocking
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 import java.io.File
-import java.util.*
 
 class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetObserver {
 
@@ -48,6 +48,7 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memes_detail)
+        MemeImage.setContextObserver(this)
         initializeViews()
         setupCardStackView()
         setupButtons()
@@ -234,6 +235,17 @@ class MemesDetailActivity : AppCompatActivity(), CardStackListener, BottomSheetO
         onClickDeleteMemeFromStorage()
         onClickRewind()
         onClickShareCurrentImage()
+        onClickEditImage()
+    }
+
+    private fun onClickEditImage() {
+        edit_button.setOnClickListener {
+            val file = File(cacheDir.path,"imageToEdit.png")
+            File(currentMemeImage.imageUri).copyTo(file,true)
+            val intent = Intent(this, EditAndShareMeme::class.java)
+            intent.putExtra("ImageToEdit", file.path)
+            startActivity(intent)
+        }
     }
 
     private fun onClickShareCurrentImage() {

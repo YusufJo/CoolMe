@@ -57,9 +57,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onClickStartGifsActivity(view: View) {
-//        TODO("Complete what in the document and complete the document refrences")
-        val intent = Intent(this, GifsActivity::class.java)
-        startActivity(intent)
+        Toast.makeText(applicationContext,"Coming in version 2.0",Toast.LENGTH_SHORT).show()
     }
 
 

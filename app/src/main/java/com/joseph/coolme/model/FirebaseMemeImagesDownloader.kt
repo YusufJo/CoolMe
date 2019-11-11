@@ -78,7 +78,6 @@ class FirebaseMemeImagesDownloader {
                             MemeImage.createMemeImage("Finding neverland", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/3583368914438023384.PNG", true),
                             MemeImage.createMemeImage("Gaven Shook 2", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/5489744819494715310.PNG", true),
                             MemeImage.createMemeImage("Gaven Shook 1", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/8444310702317302581.PNG", true),
-                            MemeImage.createMemeImage("Hamdi el-Wazeer cat", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/908598265378916996.PNG", true),
                             MemeImage.createMemeImage("I Know That feeling Bro", "miscellaneous", "${MemeImage.memeTemplatesDirectory}/6456524840913374705.PNG", true)
                     ).saveMultipleMemeObjectsToSharedPrefernces()
                 }

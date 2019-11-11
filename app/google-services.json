@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "553409933475-6tl32rofvikkatcu0jo1l6c9ivunq4dr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joseph.coolme",
+            "certificate_hash": "e3ee12999d4287b371783d162e5c6cf953a9b4cf"
+          }
+        },
+        {
           "client_id": "553409933475-tvkelm97binft9gt981uf69legpibsgi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

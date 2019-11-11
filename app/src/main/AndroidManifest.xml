@@ -15,22 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddMemeActivity">
-
-
+        <activity
+            android:name=".photoEditor.EditAndShareMeme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddMemeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <action android:name="android.intent.action.SEND" />
+
                 <data android:mimeType="image/jpeg" />
             </intent-filter>
-
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <action android:name="android.intent.action.SEND" />
+
                 <data android:mimeType="image/png" />
             </intent-filter>
-
-
         </activity>
 
         <provider
@@ -48,9 +52,6 @@
         <activity
             android:name=".MemesDetailActivity"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".GifsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".DownloadMemesActivity"
